@@ -19,6 +19,7 @@ package com.android.keyguard;
 import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.content.Context;
+import android.content.ContentResolver;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -27,6 +28,7 @@ import android.graphics.PorterDuff;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.support.v4.graphics.ColorUtils;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
@@ -91,6 +93,7 @@ public class KeyguardStatusView extends GridLayout {
         @Override
         public void onStartedWakingUp() {
             setEnableMarquee(true);
+            refreshColors();
         }
 
         @Override
@@ -118,6 +121,7 @@ public class KeyguardStatusView extends GridLayout {
         mAlarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         mLockPatternUtils = new LockPatternUtils(getContext());
         mHandler = new Handler(Looper.myLooper());
+        refreshColors();
     }
 
     private void setEnableMarquee(boolean enabled) {
@@ -160,6 +164,7 @@ public class KeyguardStatusView extends GridLayout {
         mTextColor = mClockView.getCurrentTextColor();
         mDateTextColor = mDateView.getCurrentTextColor();
         mAlarmTextColor = mAlarmStatusView.getCurrentTextColor();
+        refreshColors();
 
         boolean shouldMarquee = KeyguardUpdateMonitor.getInstance(mContext).isDeviceInteractive();
         setEnableMarquee(shouldMarquee);
@@ -191,6 +196,7 @@ public class KeyguardStatusView extends GridLayout {
 
         mClockView.setFormat12Hour(Patterns.clockView12);
         mClockView.setFormat24Hour(Patterns.clockView24);
+        refreshColors();
     }
 
     private void refresh() {
@@ -200,6 +206,7 @@ public class KeyguardStatusView extends GridLayout {
 
         refreshTime();
         refreshAlarmStatus(nextAlarm);
+        refreshColors();
     }
 
     void refreshAlarmStatus(AlarmManager.AlarmClockInfo nextAlarm) {
@@ -276,6 +283,18 @@ public class KeyguardStatusView extends GridLayout {
     @Override
     public boolean hasOverlappingRendering() {
         return false;
+    }
+
+    private void refreshColors() {
+        ContentResolver resolver = mContext.getContentResolver();
+        int timeColor = Settings.System.getInt(resolver, Settings.System.KEYGUARD_TIME_COLOR, Color.WHITE);
+        if (mClockView != null) {
+            mClockView.setTextColor(timeColor);
+        }
+        int dateColor = Settings.System.getInt(resolver, Settings.System.KEYGUARD_DATE_COLOR, Color.WHITE);
+        if (mDateView != null) {
+            mDateView.setTextColor(dateColor);
+        }
     }
 
     // DateFormat.getBestDateTimePattern is extremely expensive, and refresh is called often.

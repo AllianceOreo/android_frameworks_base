@@ -3901,6 +3901,18 @@ public final class Settings {
 
         /** @hide */
         public static final Validator LOCK_TO_APP_ENABLED_VALIDATOR = sBooleanValidator;
+       
+        /**
+         * Color of the keyguard clock
+         * @hide
+         */
+        public static final String KEYGUARD_TIME_COLOR = "keyguard_time_color";
+
+        /**
+         * Color of the keyguard date
+         * @hide
+         */
+        public static final String KEYGUARD_DATE_COLOR = "keyguard_date_color";  
 
         /**
          * I am the lolrus.
