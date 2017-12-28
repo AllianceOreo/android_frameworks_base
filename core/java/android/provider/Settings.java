@@ -3919,6 +3919,12 @@ public final class Settings {
          * @hide
          */
         public static final String KEYGUARD_ALARM_COLOR = "keyguard_alarm_color";
+ 
+        /**
+         * Color of the keyguard owner info
+         * @hide
+         */
+        public static final String KEYGUARD_OWNER_COLOR = "keyguard_owner_color"; 
 
         /**
          * I am the lolrus.
