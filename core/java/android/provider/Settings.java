@@ -3915,6 +3915,12 @@ public final class Settings {
         public static final String KEYGUARD_DATE_COLOR = "keyguard_date_color";  
 
         /**
+         * Color of the keyguard alarm
+         * @hide
+         */
+        public static final String KEYGUARD_ALARM_COLOR = "keyguard_alarm_color";
+
+        /**
          * I am the lolrus.
          * <p>
          * Nonzero values indicate that the user has a bukkit.

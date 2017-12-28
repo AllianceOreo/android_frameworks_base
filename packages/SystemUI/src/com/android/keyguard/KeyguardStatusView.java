@@ -295,6 +295,10 @@ public class KeyguardStatusView extends GridLayout {
         if (mDateView != null) {
             mDateView.setTextColor(dateColor);
         }
+        int alarmColor = Settings.System.getInt(resolver, Settings.System.KEYGUARD_ALARM_COLOR, Color.WHITE);
+        if (mAlarmStatusView != null) {
+            mAlarmStatusView.setTextColor(alarmColor);
+        }
     }
 
     // DateFormat.getBestDateTimePattern is extremely expensive, and refresh is called often.
