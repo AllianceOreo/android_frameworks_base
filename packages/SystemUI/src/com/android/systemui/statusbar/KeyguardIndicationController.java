@@ -18,6 +18,7 @@ package com.android.systemui.statusbar;
 
 import android.app.admin.DevicePolicyManager;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -32,12 +33,14 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.alliance.AllianceUtils;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.app.IBatteryStats;
 import com.android.keyguard.KeyguardUpdateMonitor;
@@ -88,7 +91,7 @@ public class KeyguardIndicationController {
     private int mChargingSpeed;
     private int mChargingWattage;
     private String mMessageToShowOnScreenOn;
-
+ 	private static boolean mTextSwitch; 
     private KeyguardUpdateMonitorCallback mUpdateMonitorCallback;
 
     private final DevicePolicyManager mDevicePolicyManager;
@@ -318,6 +321,12 @@ public class KeyguardIndicationController {
                 }
                 mTextView.switchIndication(indication);
                 mTextView.setTextColor(mInitialTextColor);
+                mTextSwitch = Settings.System.getInt(mContext.getContentResolver(),
+                //Change the switch key
+                Settings.System. MASTER_TEXT_COLOR_SWITCH, 0) == 1;
+                if(mTextSwitch){
+                AllianceUtils.colorizeText(mContext, mTextView, Settings.System.KEYGUARD_CHARGE_COLOR, 0xff000000);
+			}
             } else if (!TextUtils.isEmpty(trustManagedIndication)
                     && updateMonitor.getUserTrustIsManaged(userId)
                     && !updateMonitor.getUserHasTrust(userId)) {
