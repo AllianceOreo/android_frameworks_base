@@ -3906,7 +3906,19 @@ public final class Settings {
          * Color of the keyguard clock
          * @hide
          */
+        public static final String KEYGUARD_TIME_COLOR_SWITCH = "keyguard_time_color_switch";
+       
+        /**
+         * Color of the keyguard clock
+         * @hide
+         */
         public static final String KEYGUARD_TIME_COLOR = "keyguard_time_color";
+
+        /**
+         * Color of the keyguard date
+         * @hide
+         */
+        public static final String KEYGUARD_DATE_COLOR_SWITCH = "keyguard_date_color_switch";  
 
         /**
          * Color of the keyguard date
@@ -3918,7 +3930,19 @@ public final class Settings {
          * Color of the keyguard alarm
          * @hide
          */
+        public static final String KEYGUARD_ALARM_COLOR_SWITCH = "keyguard_alarm_color_switch";
+ 
+        /**
+         * Color of the keyguard alarm
+         * @hide
+         */
         public static final String KEYGUARD_ALARM_COLOR = "keyguard_alarm_color";
+ 
+        /**
+         * Color of the keyguard owner info
+         * @hide
+         */
+        public static final String KEYGUARD_OWNER_COLOR_SWITCH = "keyguard_owner_color_switch"; 
  
         /**
          * Color of the keyguard owner info
@@ -3951,13 +3975,31 @@ public final class Settings {
          * Color of the lock icon on lockscreen
          * @hide
          */
+        public static final String KEYGUARD_LOCK_ICON_COLOR_SWITCH = "keyguard_lock_icon_color_switch";
+
+        /**
+         * Color of the lock icon on lockscreen
+         * @hide
+         */
         public static final String KEYGUARD_LOCK_ICON_COLOR = "keyguard_lock_icon_color";
 
         /**
          * Color of the camera icon on lockscreen
          * @hide
          */
+        public static final String KEYGUARD_CAMERA_ICON_COLOR_SWITCH = "keyguard_camera_icon_color_switch";
+
+        /**
+         * Color of the camera icon on lockscreen
+         * @hide
+         */
         public static final String KEYGUARD_CAMERA_ICON_COLOR = "keyguard_camera_icon_color";
+
+        /**
+         * Color of the phone icon on lockscreen
+         * @hide
+         */
+        public static final String KEYGUARD_PHONE_ICON_COLOR_SWITCH = "keyguard_phone_icon_color_switch";
 
         /**
          * Color of the phone icon on lockscreen

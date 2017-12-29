@@ -73,6 +73,7 @@ public class KeyguardStatusView extends GridLayout {
     private int mTextColor;
     private int mDateTextColor;
     private int mAlarmTextColor;
+ 	private static boolean mTextSwitch;     
 
     private KeyguardUpdateMonitorCallback mInfoCallback = new KeyguardUpdateMonitorCallback() {
 
@@ -287,21 +288,37 @@ public class KeyguardStatusView extends GridLayout {
 
     private void refreshColors() {
         ContentResolver resolver = mContext.getContentResolver();
+        mTextSwitch = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System. KEYGUARD_TIME_COLOR_SWITCH, 0) == 1;
+                if(mTextSwitch){
         int timeColor = Settings.System.getInt(resolver, Settings.System.KEYGUARD_TIME_COLOR, Color.WHITE);
         if (mClockView != null) {
             mClockView.setTextColor(timeColor);
+            }
         }
+        mTextSwitch = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System. KEYGUARD_DATE_COLOR_SWITCH, 0) == 1;
+                if(mTextSwitch){
         int dateColor = Settings.System.getInt(resolver, Settings.System.KEYGUARD_DATE_COLOR, Color.WHITE);
         if (mDateView != null) {
             mDateView.setTextColor(dateColor);
+            }
         }
+        mTextSwitch = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System. KEYGUARD_ALARM_COLOR_SWITCH, 0) == 1;
+                if(mTextSwitch){
         int alarmColor = Settings.System.getInt(resolver, Settings.System.KEYGUARD_ALARM_COLOR, Color.WHITE);
         if (mAlarmStatusView != null) {
             mAlarmStatusView.setTextColor(alarmColor);
+            }
         }
+        mTextSwitch = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System. KEYGUARD_OWNER_COLOR_SWITCH, 0) == 1;
+                if(mTextSwitch){
         int ownerColor = Settings.System.getInt(resolver, Settings.System.KEYGUARD_OWNER_COLOR, Color.WHITE);
         if (mOwnerInfo != null) {
             mOwnerInfo.setTextColor(ownerColor);
+            }
         }
     }
 

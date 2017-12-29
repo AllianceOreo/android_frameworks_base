@@ -140,7 +140,8 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
     private AccessibilityController mAccessibilityController;
     private StatusBar mStatusBar;
     private KeyguardAffordanceHelper mAffordanceHelper;
-
+    private static boolean mIconSwitch;     
+     	
     private boolean mUserSetupComplete;
     private boolean mPrewarmBound;
     private Messenger mPrewarmMessenger;
@@ -824,14 +825,26 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
 
 
     private void refreshColors() {
+    //mIconSwitch = Settings.System.getInt(mContext.getContentResolver(),
+    //            Settings.System. KEYGUARD_LOCK_ICON_COLOR_SWITCH, 0) == 1;
+    //            if(mIconSwitch){
         if (mLockIcon != null) {
             AllianceUtils.colorizeIconAtop(mContext, mLockIcon, Settings.System.KEYGUARD_LOCK_ICON_COLOR, 0xb3ffffff);
-        } 
+    //   } 
+    } 
+    //mIconSwitch = Settings.System.getInt(mContext.getContentResolver(),
+    //            Settings.System. KEYGUARD_CAMERA_ICON_COLOR_SWITCH, 0) == 1;
+    //            if(mIconSwitch){  
         if (mRightAffordanceView != null) {
             AllianceUtils.colorizeIconAtop(mContext, mRightAffordanceView, Settings.System.KEYGUARD_CAMERA_ICON_COLOR, 0xb3ffffff);
-        } 
+    //    } 
+    }
+    //mIconSwitch = Settings.System.getInt(mContext.getContentResolver(),
+    //            Settings.System. KEYGUARD_PHONE_ICON_COLOR_SWITCH, 0) == 1;
+    //            if(mIconSwitch){  
         if (mLeftAffordanceView != null) {
-            AllianceUtils.colorizeIconAtop(mContext, mLeftAffordanceView, Settings.System.KEYGUARD_PHONE_ICON_COLOR, 0xb3ffffff);                        
+            AllianceUtils.colorizeIconAtop(mContext, mLeftAffordanceView, Settings.System.KEYGUARD_PHONE_ICON_COLOR, 0xb3ffffff); 
+    //        }                       
         }  
     }
 
