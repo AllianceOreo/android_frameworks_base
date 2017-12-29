@@ -105,14 +105,14 @@ public class NotificationBackgroundView extends View {
         final Drawable d = mContext.getDrawable(drawableResId);
         setCustomBackground(d);
     }
-// Change the keys twat face!!
+    
     public void setTint(int tintColor) {
         mBackground.setColorFilter(mBackgroundColor, PorterDuff.Mode.SRC_ATOP);
         mBackgroundColorSwitch = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System. MASTER_TEXT_COLOR_SWITCH, 0) == 1;
+                Settings.System. NOTIFICATION_BG_COLOR_SWITCH, 0) == 1;
 				if(mBackgroundColorSwitch){
 	    mBackgroundColor = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.MAIN_TEXT_COLOR, Color.WHITE);       
+                Settings.System.NOTIFICATION_BG_COLOR, Color.WHITE);       
         }else{
         if (tintColor != 0) {
             mBackground.setColorFilter(tintColor, PorterDuff.Mode.SRC_ATOP);

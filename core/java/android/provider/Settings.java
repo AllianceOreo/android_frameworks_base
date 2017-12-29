@@ -3929,12 +3929,17 @@ public final class Settings {
          /**
         * @hide
         */
-        public static final String MASTER_TEXT_COLOR_SWITCH = "master_text_color_switch";
+        public static final String NOTIFICATION_BG_COLOR_SWITCH = "notification_bg_color_switch";
 
         /**
         * @hide
         */
-        public static final String MAIN_TEXT_COLOR = "main_text_color";
+        public static final String NOTIFICATION_BG_COLOR = "notification_bg_color";
+
+         /**
+        * @hide
+        */
+        public static final String CHARGE_TEXT_COLOR_SWITCH = "charge_text_color_switch";
 
         /**
          * Color of the keyguard charging text

@@ -323,7 +323,7 @@ public class KeyguardIndicationController {
                 mTextView.setTextColor(mInitialTextColor);
                 mTextSwitch = Settings.System.getInt(mContext.getContentResolver(),
                 //Change the switch key
-                Settings.System. MASTER_TEXT_COLOR_SWITCH, 0) == 1;
+                Settings.System. CHARGE_TEXT_COLOR_SWITCH, 0) == 1;
                 if(mTextSwitch){
                 AllianceUtils.colorizeText(mContext, mTextView, Settings.System.KEYGUARD_CHARGE_COLOR, 0xff000000);
 			}
