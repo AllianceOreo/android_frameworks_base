@@ -4006,7 +4006,13 @@ public final class Settings {
          * @hide
          */
         public static final String KEYGUARD_PHONE_ICON_COLOR = "keyguard_phone_icon_color";
-
+        
+        /**
+         * Colorize power menu icons 
+         * @hide
+         */
+        public static final String POWER_MENU_ICON_COLOR = "power_menu_icon_color";  
+                
         /**
          * I am the lolrus.
          * <p>
